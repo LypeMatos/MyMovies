@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>MOVIES</h1>        
+        <div class="container-search">
+            <form action="/" method="get">
+                <input type="text" name="search" placeholder="Busque por um filme">
+                <input type="submit" value="Buscar">
+            </form>
+            {{#if search}}
+                <p>Você está buscando por: <strong>{{search}}</strong></p>
+                {{#if movieQtd}}
+                    <p>Foram encontrados {{movieQtd}} movie com este nome</p>
+                {{else}}
+                    <p>Não existe filmes com este nome</p>
+                {{/if}}
+            {{/if}}            
+        </div>        
+        {{#each movies}}    
+            <div class="movie-container">                       
+                <div id="img">
+                    <img src="images/{{this.movieImage}}" alt="{{this.name}}">
+                </div>
+                <div id="info">
+                    <a href="/movie/{{this.id}}">
+                        <h2 class="title">Título: {{this.name}}</h2>
+                        <p><strong>Data de Lançamento:</strong> {{this.releaseDate}}</p>
+                        <p><strong>Comentário:</strong> {{this.commentary}}</p>
+                        <p><strong>Autor:</strong> {{this.User.nome}}</p>
+                    </a>
+                </div>          
+            </div>  
+        {{/each}}  
+</div>

@@ -1,0 +1,35 @@
+<div class="container">
+    <h1>MOVIE</h1>
+    <div class="movie-container">
+        <div id="img">
+            <img src="/images/{{movie.dataValues.movieImage}}" alt="{{movie.dataValues.name}}">
+        </div>
+        <div id="info">
+            <h2>Movie: {{movie.dataValues.name}}</h2>
+            <p><strong>Comentário:</strong> {{movie.dataValues.commentary}}</p>
+            <p><strong>Autor:</strong> {{movie.dataValues.User.dataValues.nome}}</p>
+        </div>        
+    </div>
+    <h3>Comments</h3>    
+    {{#each commentMap}}
+    <div class="comment-section">    
+        <div id="comment">
+            <p><strong>Seu Comentário:</strong> {{this.comment}}</p>
+            <p><strong>Quem Comentou:</strong> {{this.User.dataValues.nome}}</p>
+        </div>
+        <div id="remove-btn">
+            <form action="/remove" method="post">            
+                <input type="hidden" name="commentId" value="{{this.id}}">
+                <input type="submit" value="Remover" id="removeBtn">
+            </form>
+        </div>              
+    </div>        
+    {{/each}}
+    <div class="create-comment">
+        <form action="/movie/{{movie.dataValues.id}}" method="post">
+            <input type="hidden" name="movieId" value="{{movie.dataValues.id}}">
+            <textarea name="comment" cols="30" rows="10" placeholder="Deixe seu comentário sobre o Movie"></textarea>
+            <input type="submit" value="Enviar Comentário">
+        </form>
+    </div>    
+</div>

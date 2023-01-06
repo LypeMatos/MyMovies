@@ -1,0 +1,21 @@
+<div class="dashboard">
+    <h1>My Movies</h1>
+    {{#if emptyMovies}}
+        <span>Comente sobre seu primeiro <a href="/add">Movie</a></span>
+    {{else}}
+        <span>Comente sobre mais <a href="/add">Movies</a></span>
+    {{/if}}
+    {{#each movies}}        
+        <div class="movie-dashboard">    
+            <div id="movie-poster">
+                <img src="images/{{this.movieImage}}" alt={{this.name}}>
+            </div>
+            <div id="movie-info">
+                <h2>Movie: {{this.name}}</h2>
+                <p><strong>Data de lançamento:</strong> {{this.releaseDate}}</p>
+                <p><strong>O que achei:</strong> {{this.commentary}}</p>
+                <p><strong>Autor:</strong> {{this.User.dataValues.nome}}</p>               
+            </div>                 
+        </div>
+    {{/each}}    
+</div>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/style.css">
+    <title>My App</title>
+</head>
+<body>
+    <nav class="main-navbar">
+        <a href="/" id="logo">
+            <img src="/images/logo.png" alt="logo">
+        </a>
+        <ul>
+            {{#if session.userid}}
+                <li><a href="/dashboard">My Movies</a></li>
+                <li><a href="/logout">Sair</a></li>
+            {{else}}
+                <li><a href="/login">Entrar</a></li>
+                <li><a href="/registrar">Cadastrar</a></li>
+            {{/if}}
+        </ul>
+    </nav>
+    <div class="error-container">
+        {{#if messages.message}}
+            <div class="message">
+                {{messages.message}}
+            </div>
+        {{/if}}
+    </div>
+    {{{body}}}
+</body>
+</html>
